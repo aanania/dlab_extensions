@@ -1,0 +1,15 @@
+version: "3.3"
+
+services:
+  gitlab:
+    image: gitlab/gitlab-ce:latest
+    volumes:
+      - $DLAB_HOME$/gitlab/data:/var/opt/gitlab
+      - $DLAB_HOME$/gitlab/logs:/var/log/gitlab
+      - $DLAB_HOME$/gitlab/config:/etc/gitlab
+      - $DLAB_HOME$/gitlab/config/gitlab.rb:/etc/gitlab/config/gitlab.rb
+    networks:
+      - $DLAB_NAME$_registry_frontend
+      - $DLAB_NAME$_registry_backend
+    deploy:
+      replicas: 1

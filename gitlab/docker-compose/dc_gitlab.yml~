@@ -1,0 +1,22 @@
+version: "3.3"
+
+services:
+  gitlab:
+    image: gitlab/gitlab-ce:latest
+  #  ports:
+  #    - "$GITSSHPORT:22"
+  #    - "$GITHTTPORT:80"
+  #    - "$GITSECPORT:443"
+    volumes:
+      - $GITDATA:/var/opt/gitlab
+      - $GITLOGS:/var/log/gitlab
+      - $GITCONF:/etc/gitlab
+      - $GITCFGFILE:/gitlab.rb
+      #    environment:
+      #      GITLAB_OMNIBUS_CONFIG: "from_file('/gitlab.rb')"
+        gitlab-runner:
+            image: gitlab/gitlab-runner:alpine
+                deploy:
+                      mode: replicated
+                            replicas: 1
+
