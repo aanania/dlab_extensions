@@ -10,7 +10,7 @@
 ##! URL on which GitLab will be reachable.
 ##! For more details on configuring external_url see:
 ##! https://docs.gitlab.com/omnibus/settings/configuration.html#configuring-the-external-url-for-gitlab
-external_url 'http://pl14'
+external_url $GITLABHOSTNAME$
 
 ## Roles for multi-instance GitLab
 ##! The default is to have no roles enabled, which results in GitLab running as an all-in-one instance.
@@ -291,11 +291,11 @@ gitlab_rails['ldap_enabled'] = true
  gitlab_rails['ldap_servers'] = YAML.load <<-'EOS'
    main: # 'main' is the GitLab 'provider ID' of this LDAP server
      label: 'Datalab'
-     host: 'datalab.pl.eso.org'
+     host: 'ldap-server'
      port: 389
      uid: 'uid'
-     bind_dn: 'cn=admin,dc=pl,dc=eso,dc=org'
-     password: 'admin'
+     bind_dn: $GITLABLDAPDN$
+     password: $GITLABPW$
      encryption: 'plain' # "start_tls" or "simple_tls" or "plain"
      verify_certificates: false
      smartcard_auth: false
@@ -303,7 +303,7 @@ gitlab_rails['ldap_enabled'] = true
      allow_username_or_email_login: true
      lowercase_usernames: false
      block_auto_created_users: false
-     base: 'ou=users,dc=pl,dc=eso,dc=org'
+     base: $GITLABLDAPBASE$
      user_filter: ''
      ## EE only
      group_base: ''
