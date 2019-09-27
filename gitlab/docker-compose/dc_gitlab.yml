@@ -13,3 +13,9 @@ services:
       - $DLAB_NAME$_registry_backend
     deploy:
       replicas: 1
+
+networks:
+  $DLAB_NAME$_registry_backend:
+    external: true
+  $DLAB_NAME$_registry_frontend:
+    external: true
