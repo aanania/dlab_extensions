@@ -294,8 +294,8 @@ gitlab_rails['ldap_enabled'] = true
      host: 'ldap-server'
      port: 389
      uid: 'uid'
-     bind_dn: $DLAB_GITLABLDAPDN$
-     password: $DLAB_GITLABPW$
+     bind_dn: '$DLAB_GITLABLDAPDN$'
+     password: '$DLAB_GITLABPW$'
      encryption: 'plain' # "start_tls" or "simple_tls" or "plain"
      verify_certificates: false
      smartcard_auth: false
@@ -303,7 +303,7 @@ gitlab_rails['ldap_enabled'] = true
      allow_username_or_email_login: true
      lowercase_usernames: false
      block_auto_created_users: false
-     base: $DLAB_GITLABLDAPBASE$
+     base: '$DLAB_GITLABLDAPBASE$'
      user_filter: ''
      ## EE only
      group_base: ''
