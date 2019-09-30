@@ -1,0 +1,10 @@
+TODO:
+1.- Fix backup: Commands to do the backup
+Backup: This will create backups in directory /data/distributed/gitlab/backups
+docker exec -t <container name> gitlab-backup create
+
+Restore: Need to place backup files in directory /data/distributed/gitlab/backups
+docker exec -it <name of container> gitlab-backup restore BACKUP=<date>
+(if BACKUP not used, will suggest alternatives)
+
+2.- Fix directories permissions
